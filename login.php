@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // SQL 語法 * 代表所有欄位 FROM 來自 users 資料表  WHERE 條件式
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-
+    // echo $sql; // 可以視情況註解，目的：確認使用者輸入的內容是否有影響到程式邏輯
     // 執行 SQL
     $result = mysqli_query($link, $sql);
 
@@ -39,8 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 判斷是否有資料
     if ($count == 1) {
         echo "Hello";
+        // 日誌輸出
+        error_log(date("Y-m-d H:i:s")." ".$_SERVER['REMOTE_ADDR']." ".$_SERVER['HTTP_USER_AGENT']." ".$_SERVER['REQUEST_URI']." ".$_SERVER['REQUEST_METHOD']." ".$_SERVER['QUERY_STRING']." "."帳號：".$_POST['username'] ."密碼：". $_POST['password']."\n", 3, "C:\\xampp\\apache\\logs\\testlog1.log");
     } else {
         echo "帳號密碼錯誤";
+        // 日誌輸出
+        error_log(date("Y-m-d H:i:s")." ".$_SERVER['REMOTE_ADDR']." ".$_SERVER['HTTP_USER_AGENT']." ".$_SERVER['REQUEST_URI']." ".$_SERVER['REQUEST_METHOD']." ".$_SERVER['QUERY_STRING']." "."帳號：".$_POST['username'] ."密碼：". $_POST['password']."\n", 3, "C:\\xampp\\apache\\logs\\test.log");
     }
 }
 
