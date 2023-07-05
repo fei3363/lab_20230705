@@ -21,4 +21,16 @@ if ($link === false) {
     echo "連線成功";
 }
 
+// 驗證帳號密碼是否正確，如果正確就輸出 Hello 如果錯誤就輸出帳號密碼錯誤
+
+// 取得帳號密碼
+
 ?>
+<!-- HTML 內容 -->
+<!-- form 表單標籤 -->
+
+<form action="login.php" method="post">
+    <input type="text" name="username" placeholder="請輸入帳號">
+    <input type="password" name="password" placeholder="請輸入密碼">
+    <input type="submit" value="登入">
+</form>
